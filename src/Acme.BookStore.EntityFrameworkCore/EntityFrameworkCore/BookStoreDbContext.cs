@@ -3,6 +3,7 @@ using Acme.BookStore.Users;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
+using Volo.Abp.Identity;
 using Volo.Abp.Users.EntityFrameworkCore;
 
 namespace Acme.BookStore.EntityFrameworkCore
@@ -21,6 +22,7 @@ namespace Acme.BookStore.EntityFrameworkCore
     {
         public DbSet<AppUser> Users { get; set; }
         public DbSet<Book> Books { get; set; } //<--added this line-->
+        public DbSet<Student>Students { get; set; } //<--added this line-->
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside BookStoreDbContextModelCreatingExtensions.ConfigureBookStore
          */
@@ -39,12 +41,14 @@ namespace Acme.BookStore.EntityFrameworkCore
 
             builder.Entity<AppUser>(b =>
             {
-                b.ToTable("AbpUsers"); //Sharing the same table "AbpUsers" with the IdentityUser
+                b.ToTable(AbpIdentityDbProperties.DbTablePrefix + "Users"); //Sharing the same table "AbpUsers" with the IdentityUser
+                
                 b.ConfigureByConvention();
                 b.ConfigureAbpUser();
 
-                //Moved customization to a method so we can share it with the BookStoreMigrationsDbContext class
-                b.ConfigureCustomUserProperties();
+                /* Configure mappings for your additional properties
+                 * Also see the BookStoreEfCoreEntityExtensionMappings class
+                 */
             });
 
             /* Configure your own tables/entities inside the ConfigureBookStore method */

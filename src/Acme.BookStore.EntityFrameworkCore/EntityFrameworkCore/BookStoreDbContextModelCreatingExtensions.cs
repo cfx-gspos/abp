@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Volo.Abp;
-using Volo.Abp.Users;
 using Volo.Abp.EntityFrameworkCore.Modeling;
-
 namespace Acme.BookStore.EntityFrameworkCore
 {
     public static class BookStoreDbContextModelCreatingExtensions
@@ -26,12 +23,12 @@ namespace Acme.BookStore.EntityFrameworkCore
                 b.ConfigureByConvention(); //auto configure for the base class props
                 b.Property(x => x.Name).IsRequired().HasMaxLength(128);
             });
-        }
-
-        public static void ConfigureCustomUserProperties<TUser>(this EntityTypeBuilder<TUser> b)
-            where TUser: class, IUser
-        {
-            //b.Property<string>(nameof(AppUser.MyProperty))...
+            builder.Entity<Student>(b =>
+            {
+                b.ToTable(BookStoreConsts.DbTablePrefix + "Students", BookStoreConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+            });
         }
     }
 }

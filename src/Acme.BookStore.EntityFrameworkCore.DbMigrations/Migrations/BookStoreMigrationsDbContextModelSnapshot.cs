@@ -15,7 +15,7 @@ namespace Acme.BookStore.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.0")
+                .HasAnnotation("ProductVersion", "3.1.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -69,6 +69,47 @@ namespace Acme.BookStore.Migrations
                     b.ToTable("AppBooks");
                 });
 
+            modelBuilder.Entity("Acme.BookStore.Student", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnName("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnName("CreatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnName("ExtraProperties")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnName("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnName("LastModifierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppStudents");
+                });
+
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
@@ -106,6 +147,8 @@ namespace Acme.BookStore.Migrations
                         .HasMaxLength(256);
 
                     b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CorrelationId")
@@ -214,6 +257,7 @@ namespace Acme.BookStore.Migrations
                         .HasMaxLength(256);
 
                     b.Property<Guid?>("TenantId")
+                        .HasColumnName("TenantId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -307,6 +351,7 @@ namespace Acme.BookStore.Migrations
                         .HasMaxLength(64);
 
                     b.Property<Guid?>("TenantId")
+                        .HasColumnName("TenantId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -323,6 +368,8 @@ namespace Acme.BookStore.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationTime")
@@ -490,6 +537,7 @@ namespace Acme.BookStore.Migrations
                         .HasMaxLength(256);
 
                     b.Property<Guid?>("TenantId")
+                        .HasColumnName("TenantId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -517,6 +565,7 @@ namespace Acme.BookStore.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("TenantId")
+                        .HasColumnName("TenantId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -686,6 +735,7 @@ namespace Acme.BookStore.Migrations
                         .HasMaxLength(1024);
 
                     b.Property<Guid?>("TenantId")
+                        .HasColumnName("TenantId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
@@ -717,6 +767,7 @@ namespace Acme.BookStore.Migrations
                         .HasMaxLength(196);
 
                     b.Property<Guid?>("TenantId")
+                        .HasColumnName("TenantId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("UserId", "LoginProvider");
@@ -735,6 +786,7 @@ namespace Acme.BookStore.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("TenantId")
+                        .HasColumnName("TenantId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("UserId", "RoleId");
@@ -758,6 +810,7 @@ namespace Acme.BookStore.Migrations
                         .HasMaxLength(128);
 
                     b.Property<Guid?>("TenantId")
+                        .HasColumnName("TenantId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Value")
@@ -1323,6 +1376,8 @@ namespace Acme.BookStore.Migrations
                         .HasMaxLength(200);
 
                     b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationTime")
@@ -1475,6 +1530,7 @@ namespace Acme.BookStore.Migrations
                         .HasMaxLength(64);
 
                     b.Property<Guid?>("TenantId")
+                        .HasColumnName("TenantId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
