@@ -14,6 +14,9 @@ namespace Acme.BookStore
 
             CreateMap<Student, StudentDto>();
             CreateMap<CreateUpdateStudentDto, Student>(); //<--added this line-->
+
+            CreateMap<Cat, CatDto>();
+            CreateMap<CreateUpdateCatDto, Cat>(); //<--added this line-->
         }
     }
 }

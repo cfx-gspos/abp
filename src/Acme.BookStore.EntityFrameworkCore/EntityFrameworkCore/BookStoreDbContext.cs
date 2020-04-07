@@ -23,6 +23,7 @@ namespace Acme.BookStore.EntityFrameworkCore
         public DbSet<AppUser> Users { get; set; }
         public DbSet<Book> Books { get; set; } //<--added this line-->
         public DbSet<Student>Students { get; set; } //<--added this line-->
+        public DbSet<Cat> Cats { get; set; } //<--added this line-->
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside BookStoreDbContextModelCreatingExtensions.ConfigureBookStore
          */

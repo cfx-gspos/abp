@@ -29,6 +29,12 @@ namespace Acme.BookStore.EntityFrameworkCore
                 b.ConfigureByConvention(); //auto configure for the base class props
                 b.Property(x => x.Name).IsRequired().HasMaxLength(128);
             });
+            builder.Entity<Cat>(b =>
+            {
+                b.ToTable(BookStoreConsts.DbTablePrefix + "Cats", BookStoreConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+            });
         }
     }
 }
