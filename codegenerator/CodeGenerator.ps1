@@ -1,4 +1,6 @@
+
 param($p1 )
+Remove-Item .\output -Force -Recurse
 #copy template to output
 Copy-Item -Path "src"   -Recurse -Destination "output" -Container
 cd output
