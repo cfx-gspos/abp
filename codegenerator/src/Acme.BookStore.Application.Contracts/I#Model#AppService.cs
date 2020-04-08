@@ -4,13 +4,13 @@ using Volo.Abp.Application.Services;
 
 namespace Acme.BookStore
 {
-    public interface ICatAppService :
+    public interface I#Model#AppService :
         ICrudAppService< //Defines CRUD methods
-            CatDto, //Used to show books
+            #Model#Dto, //Used to show books
             Guid, //Primary key of the book entity
             PagedAndSortedResultRequestDto, //Used for paging/sorting on getting a list of books
-            CreateUpdateCatDto, //Used to create a new book
-            CreateUpdateCatDto> //Used to update a book
+            CreateUpdate#Model#Dto, //Used to create a new book
+            CreateUpdate#Model#Dto> //Used to update a book
     {
 
     }
